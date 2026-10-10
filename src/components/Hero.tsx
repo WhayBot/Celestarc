@@ -1,8 +1,22 @@
+import { useState, useEffect } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { content } from '../content/content';
+import { resolveImageUrl } from '../utils/image';
 
 export const Hero = () => {
   const { hero } = content;
+  const rawImages = hero.images && hero.images.length > 0 ? hero.images : [hero.imageUrl];
+  const images = rawImages.map(resolveImageUrl);
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (images.length <= 1) return;
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [images.length]);
 
   return (
     <section className="hero-section">
@@ -61,14 +75,17 @@ export const Hero = () => {
         {/* Right Column: Hero Image Frame */}
         <div className="hero-visual">
           <div className="image-placeholder-frame hero-placeholder-frame">
-            <img
-              src={hero.imageUrl}
-              alt={hero.imageAlt}
-              className="hero-image"
-              onError={(e) => {
-                e.currentTarget.style.display = 'none';
-              }}
-            />
+            {images.map((imgSrc, idx) => (
+              <img
+                key={imgSrc + idx}
+                src={imgSrc}
+                alt={`${hero.imageAlt} ${idx + 1}`}
+                className={`hero-image ${idx === currentIndex ? 'active' : ''}`}
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                }}
+              />
+            ))}
             <span className="image-placeholder-label">[FOTO PROTOTIPE / STUDIO]</span>
           </div>
         </div>

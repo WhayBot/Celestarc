@@ -1,5 +1,6 @@
 import { ArrowUpRight } from 'lucide-react';
 import { content } from '../content/content';
+import { resolveImageUrl } from '../utils/image';
 
 export const AboutSection = () => {
   const { about } = content;
@@ -8,10 +9,23 @@ export const AboutSection = () => {
     <section id="about" className="section-about">
       <div className="container">
         
-        {/* Section Header */}
-        <div className="section-header">
-          <h2 className="section-title">{about.title}</h2>
-          <p className="section-intro">{about.intro}</p>
+        {/* About Studio Block: Single Column Left-Aligned */}
+        <div className="about-studio-block">
+          <h2 className="section-title about-heading">{about.title}</h2>
+          
+          <p className="about-headline">{about.headline}</p>
+          {/* TODO: cerita asal Celestarc, 3-6 kalimat, dari founder */}
+
+          <div className="about-link-row">
+            <a
+              href={about.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="about-github-link"
+            >
+              {about.githubLinkText}
+            </a>
+          </div>
         </div>
 
         {/* Meet The Team Section */}
@@ -23,7 +37,7 @@ export const AboutSection = () => {
               <div key={member.role} className="team-member-col">
                 <div className="team-photo-frame">
                   <img
-                    src={member.photoUrl}
+                    src={resolveImageUrl(member.photoUrl)}
                     alt={member.name}
                     className="team-photo"
                     onError={(e) => {
@@ -38,43 +52,41 @@ export const AboutSection = () => {
                   <p className="team-member-role">{member.role}</p>
                   <p className="team-member-bio">{member.bio}</p>
 
-                  {member.links && (
-                    <div className="team-member-links">
-                      {member.links.portfolio && (
-                        <a
-                          href={member.links.portfolio}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="founder-anchor"
-                        >
-                          <span>Portfolio</span>
-                          <ArrowUpRight className="icon-sm" />
-                        </a>
-                      )}
-                      {member.links.github && (
-                        <a
-                          href={member.links.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="founder-anchor"
-                        >
-                          <span>GitHub</span>
-                          <ArrowUpRight className="icon-sm" />
-                        </a>
-                      )}
-                      {member.links.x && (
-                        <a
-                          href={member.links.x}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="founder-anchor"
-                        >
-                          <span>X (Twitter)</span>
-                          <ArrowUpRight className="icon-sm" />
-                        </a>
-                      )}
-                    </div>
-                  )}
+                  <div className="team-member-links">
+                    {member.links?.portfolio && (
+                      <a
+                        href={member.links.portfolio}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="founder-anchor"
+                      >
+                        <span>Portfolio</span>
+                        <ArrowUpRight className="icon-sm" />
+                      </a>
+                    )}
+                    {member.links?.github && (
+                      <a
+                        href={member.links.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="founder-anchor"
+                      >
+                        <span>GitHub</span>
+                        <ArrowUpRight className="icon-sm" />
+                      </a>
+                    )}
+                    {member.links?.x && (
+                      <a
+                        href={member.links.x}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="founder-anchor"
+                      >
+                        <span>X (Twitter)</span>
+                        <ArrowUpRight className="icon-sm" />
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
             ))}

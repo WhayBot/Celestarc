@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { content } from '../content/content';
+import { resolveImageUrl } from '../utils/image';
 
 export const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -12,7 +13,7 @@ export const Navbar = () => {
         {/* Logo only: text 'Celestarc Industries' removed since it is inside the logo graphic */}
         <a href="#" className="brand-link" aria-label="Celestarc Industries Home">
           <img
-            src="/image/logo.webp"
+            src={resolveImageUrl('/image/logo.png')}
             alt="Celestarc Industries"
             className="brand-logo"
           />

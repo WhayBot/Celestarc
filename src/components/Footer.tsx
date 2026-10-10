@@ -1,4 +1,5 @@
 import { content } from '../content/content';
+import { resolveImageUrl } from '../utils/image';
 
 export const Footer = () => {
   const { footer } = content;
@@ -8,7 +9,7 @@ export const Footer = () => {
       <div className="container footer-container">
         <div className="footer-left">
           <img
-            src="/image/logo.webp"
+            src={resolveImageUrl('/image/logo.png')}
             alt="Celestarc Industries"
             className="footer-logo"
           />

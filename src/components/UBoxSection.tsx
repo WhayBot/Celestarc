@@ -1,5 +1,6 @@
 import { ArrowUpRight } from 'lucide-react';
 import { content } from '../content/content';
+import { resolveImageUrl } from '../utils/image';
 
 export const UBoxSection = () => {
   const { ubox } = content;
@@ -31,7 +32,7 @@ export const UBoxSection = () => {
           <h3 className="diagram-heading">Signal &amp; Power Routing</h3>
           <div className="image-placeholder-frame diagram-placeholder-frame">
             <img
-              src={ubox.diagramImage}
+              src={resolveImageUrl(ubox.diagramImage)}
               alt={ubox.diagramAlt}
               className="diagram-image"
               onError={(e) => {

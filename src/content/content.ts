@@ -40,6 +40,7 @@ export interface ContentDictionary {
     studioDescription: string;
     imageUrl: string;
     imageAlt: string;
+    images?: string[];
     title: string;
     subtitle: string;
     ctaPrimary: string;
@@ -75,7 +76,9 @@ export interface ContentDictionary {
   };
   about: {
     title: string;
-    intro: string;
+    headline: string;
+    githubUrl: string;
+    githubLinkText: string;
     teamTitle: string;
     team: TeamMember[];
   };
@@ -116,6 +119,12 @@ export const contentEN: ContentDictionary = {
     studioDescription: 'An independent engineering studio based in Kebumen, Central Java, Indonesia. We build embedded devices and AI agents, starting from working prototypes.',
     imageUrl: '/image/hero.png',
     imageAlt: 'Celestarc Industries studio and hardware engineering',
+    images: [
+      '/image/hero.png',
+      '/image/hero1.png',
+      '/image/hero2.png',
+      '/image/hero3.png',
+    ],
     title: 'A WiFi switch that runs on schedule, even without internet.',
     subtitle: 'U-BOX turns equipment on and off at set times. It keeps accurate time with a hardware clock and needs no internet or cloud account.',
     ctaPrimary: 'View on GitHub',
@@ -205,8 +214,10 @@ export const contentEN: ContentDictionary = {
     ],
   },
   about: {
-    title: 'About Celestarc Industries',
-    intro: 'Celestarc Industries is an independent engineering studio based in Kebumen, Central Java, Indonesia. We build embedded devices and AI agents, starting from working prototypes.',
+    title: 'Engineering you can inspect.',
+    headline: 'Celestarc Industries is an engineering studio for embedded hardware and AI agents. We build prototypes first and publish the code as we go.',
+    githubUrl: 'https://github.com/WhayBot',
+    githubLinkText: 'See our source code on GitHub →',
     teamTitle: 'Meet The Team',
     team: [
       {
@@ -233,8 +244,8 @@ export const contentEN: ContentDictionary = {
       },
       {
         role: 'Chief Operating Officer',
-        name: '[NAMA COO]',
-        bio: '[Manajemen operasional prototipe, pengujian lapangan & tata kelola proyek]',
+        name: 'Fauzan Tungga Fitra',
+        bio: 'Manages prototype field testing, assembly workflows, and component sourcing across studio hardware builds. Coordinates operational schedules, deployment logistics, and project delivery.',
         photoUrl: '/image/coo.png',
         photoPlaceholder: '[FOTO COO]',
       },
