@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { content } from '../content/content';
 import { resolveImageUrl } from '../utils/image';
+import { scrollToSection } from '../utils/navigation';
 
 export const Hero = () => {
   const { hero } = content;
@@ -28,7 +29,11 @@ export const Hero = () => {
             <p className="hero-studio-desc">{hero.studioDescription}</p>
 
             <div className="hero-cta-group">
-              <a href="#contact" className="btn-primary">
+              <a
+                href="#contact"
+                className="btn-primary"
+                onClick={(e) => scrollToSection('contact', e)}
+              >
                 {hero.ctaSecondary}
               </a>
               <a
